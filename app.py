@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import numpy as np
 
-model = pickle.load(open('/home/adminspin/Music/gaadiwala/new_pickle.pkl','rb'))
+model = pickle.load(open('./new_pickle.pkl','rb'))
 
 brand = {'Ambassador Classic': 0,'Audi A3': 1,'Audi A4': 2,'Audi A6': 3,'Audi A7': 4,'Audi A8': 5,'Audi Q3': 6,'Audi Q5': 7,
  'Audi Q7': 8,'Audi RS5': 9,'Audi TT': 10,'BMW 1': 11,'BMW 3': 12,'BMW 5': 13,'BMW 6': 14,'BMW 7': 15,'BMW X1': 16,'BMW X3': 17,
