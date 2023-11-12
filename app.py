@@ -205,9 +205,10 @@ def predict():
 def prediction():
 	#a=request.form['g']
 	#return a
-	try:
-		features=["1","2","3","4","5","6","7","8"]
-		int_features=[]
+	features=["1","2","3","4","5","6","7","8"]
+	int_features=[]
+	if request.form.get(i) == None:
+
 		for i in features:
 				#a=request.form.get(i)
 				if i in "1":
@@ -240,8 +241,9 @@ def prediction():
 		#output=str(output)
 		#return redirect(url_for('success',output=age1))
 		#return output
-	except Exception as msg:
-		print("NO value : ",msg)
+	else:
+		output = 0
+
 	return render_template("predict.html" ,prediction_value='The Recommend value is {} Lakh'.format(round(float(output),2)))
 
 if __name__ == '__main__':
