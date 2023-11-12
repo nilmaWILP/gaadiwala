@@ -3,22 +3,13 @@ import pandas as pd
 import pickle
 import numpy as np
 
-model = pickle.load(open('./new_pickle.pkl','rb'))
+model = pickle.load(open('/home/adminspin/Music/gaadiwala/new_pickle.pkl','rb'))
 
 brand = {'Ambassador Classic': 0,'Audi A3': 1,'Audi A4': 2,'Audi A6': 3,'Audi A7': 4,'Audi A8': 5,'Audi Q3': 6,'Audi Q5': 7,
  'Audi Q7': 8,'Audi RS5': 9,'Audi TT': 10,'BMW 1': 11,'BMW 3': 12,'BMW 5': 13,'BMW 6': 14,'BMW 7': 15,'BMW X1': 16,'BMW X3': 17,
  'BMW X5': 18,'BMW X6': 19,'BMW Z4': 20,'Bentley Continental': 21,'Chevrolet Aveo': 22,'Chevrolet Beat': 23,'Chevrolet Captiva': 24,
- 'Chevrolet Cruze': 25,'Chevrolet Enjoy': 26,'Chevrolet Optra': 27,
- 'Chevrolet Sail': 28,
- 'Chevrolet Spark': 29,
- 'Chevrolet Tavera': 30,
- 'Datsun GO': 31,
- 'Datsun Redi': 32,
- 'Datsun redi-GO': 33,
- 'Fiat Avventura': 34,
- 'Fiat Grande': 35,
- 'Fiat Linea': 36,
- 'Fiat Punto': 37,
+ 'Chevrolet Cruze': 25,'Chevrolet Enjoy': 26,'Chevrolet Optra': 27,'Chevrolet Sail': 28,'Chevrolet Spark': 29,'Chevrolet Tavera': 30,
+ 'Datsun GO': 31,'Datsun Redi': 32,'Datsun redi-GO': 33,'Fiat Avventura': 34,'Fiat Grande': 35,'Fiat Linea': 36,'Fiat Punto': 37,
  'Force One': 38,
  'Ford Aspire': 39,
  'Ford Classic': 40,
@@ -217,24 +208,27 @@ def prediction():
 	features=["1","2","3","4","5","6","7","8"]
 	int_features=[]
 	for i in features:
-		#a=request.form.get(i)
-		if i in "1":
-			int_features.append(brand[request.form.get(i)])
+		try:
+			#a=request.form.get(i)
+			if i in "1":
+				int_features.append(brand[request.form.get(i)])
 
-		elif i in "2":
-			int_features.append(location[request.form.get(i)])
+			elif i in "2":
+				int_features.append(location[request.form.get(i)])
 
-		elif i in "3":
-			int_features.append(fuel_type[request.form.get(i)])
+			elif i in "3":
+				int_features.append(fuel_type[request.form.get(i)])
 
-		elif i in "4":
-			int_features.append(transmission[request.form.get(i)])	
+			elif i in "4":
+				int_features.append(transmission[request.form.get(i)])	
 
-		elif i in "5":
-			int_features.append(owner[request.form.get(i)])			
-		else:
-			# print("else",request.form.get(i))
-			int_features.append(request.form.get(i))
+			elif i in "5":
+				int_features.append(owner[request.form.get(i)])			
+			else:
+				# print("else",request.form.get(i))
+				int_features.append(request.form.get(i))
+		except Exception as msg:
+			print("NO value : ",msg)
 			
 	print(int_features)
 	int_features = list(map(int,int_features))
