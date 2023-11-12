@@ -205,43 +205,43 @@ def predict():
 def prediction():
 	#a=request.form['g']
 	#return a
-	features=["1","2","3","4","5","6","7","8"]
-	int_features=[]
-	for i in features:
-		try:
-			#a=request.form.get(i)
-			if i in "1":
-				int_features.append(brand[request.form.get(i)])
+	try:
+		features=["1","2","3","4","5","6","7","8"]
+		int_features=[]
+		for i in features:
+				#a=request.form.get(i)
+				if i in "1":
+					int_features.append(brand[request.form.get(i)])
 
-			elif i in "2":
-				int_features.append(location[request.form.get(i)])
+				elif i in "2":
+					int_features.append(location[request.form.get(i)])
 
-			elif i in "3":
-				int_features.append(fuel_type[request.form.get(i)])
+				elif i in "3":
+					int_features.append(fuel_type[request.form.get(i)])
 
-			elif i in "4":
-				int_features.append(transmission[request.form.get(i)])	
+				elif i in "4":
+					int_features.append(transmission[request.form.get(i)])	
 
-			elif i in "5":
-				int_features.append(owner[request.form.get(i)])			
-			else:
-				# print("else",request.form.get(i))
-				int_features.append(request.form.get(i))
-		except Exception as msg:
-			print("NO value : ",msg)
-			
-	print(int_features)
-	int_features = list(map(int,int_features))
-	#final_features = [np.array(int_features)]
+				elif i in "5":
+					int_features.append(owner[request.form.get(i)])			
+				else:
+					# print("else",request.form.get(i))
+					int_features.append(request.form.get(i))
+				
+		print(int_features)
+		int_features = list(map(int,int_features))
+		#final_features = [np.array(int_features)]
 
-	# trial = [23,1,3,1,2,2012,37000,18]
-	# print(trial)
-	prediction = model.predict([int_features])
-	output=str(prediction[0])
-	#output = model.predict([[0,61,3,1,30,0,0,1,0,225,150,95,28.8,65,103]])
-	#output=str(output)
-	#return redirect(url_for('success',output=age1))
-	#return output
+		# trial = [23,1,3,1,2,2012,37000,18]
+		# print(trial)
+		prediction = model.predict([int_features])
+		output=str(prediction[0])
+		#output = model.predict([[0,61,3,1,30,0,0,1,0,225,150,95,28.8,65,103]])
+		#output=str(output)
+		#return redirect(url_for('success',output=age1))
+		#return output
+	except Exception as msg:
+		print("NO value : ",msg)
 	return render_template("predict.html" ,prediction_value='The Recommend value is {} Lakh'.format(round(float(output),2)))
 
 if __name__ == '__main__':
