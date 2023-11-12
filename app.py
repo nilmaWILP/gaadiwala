@@ -207,7 +207,7 @@ def prediction():
 	#return a
 	features=["1","2","3","4","5","6","7","8"]
 	int_features=[]
-	if request.form.get(i) == None:
+	if request.form.get("1") == None:
 
 		for i in features:
 				#a=request.form.get(i)
